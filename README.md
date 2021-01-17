@@ -42,3 +42,58 @@ The `./frontend` directory contains a complete React frontend to consume the dat
 Pay special attention to what data the frontend is expecting from each API response to help guide how you format your API. 
 
 [View the README.md within ./frontend for more details.](./frontend/README.md)
+
+# ABOUT API
+## Get started
+Use the following commands to start the local server
+```
+export FLASK_APP=flaskr
+export FLASK_ENV=development
+flask run
+```
+
+## Endpoints
+GET '/categories'
+GET ...
+POST ...
+DELETE ...
+
+### GET '/categories'
+- Request Arguments: None
+- Returns: An object with a single key, categories, that contains a object of id: category_string key:value pairs. 
+
+### GET '/questions'
+- Request Arguments: None
+- Returns: a dictionary of all questions 
+
+
+### GET '/categories/id/questions'
+- Request Arguments: category id
+- Returns: a dictionary of all questions in the requested category
+
+
+### POST '/question'
+- Request Arguments: JSON in the body of the request, that contain the following keys: question, answer, category, difficulty
+- Returns: a dictionary of all questions, including the new question
+
+### DELETE '/question/id/delete'
+- Request Arguments: id of the question to delete
+- Returns: id of the question that was deleted
+
+
+### POST '/questions/search'
+- Request Arguments: JSON in the body of the request, that contain a key searchTerm and its value
+- Returns: list of all questions that match the search
+
+### POST '/questions/play'
+- Request Arguments: (OPTIONAL) JSON in the body of the request, that contain a category and/or previous question id
+- Returns: A question of a specific category, if category was provieded, or a question of any category. If previous id was included, then that question will not be provieded.
+
+## Testing
+To run the tests, run
+```
+dropdb trivia_test
+createdb trivia_test
+psql trivia_test < trivia.psql
+python test_flaskr.py
+```
